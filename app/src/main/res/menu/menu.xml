@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/homePage"
+        android:title="Home Page" />
+    <item
+        android:id="@+id/addPage"
+        android:title="Add" />
+    <item
+        android:id="@+id/updatePage"
+        android:title="Update" />
+    <item
+        android:id="@+id/deletePage"
+        android:title="Delete" />
+    <item
+        android:id="@+id/checkPage"
+        android:title="Check" />
+    <item
+        android:id="@+id/logoutPage"
+        android:title="Log Out" />
+</menu>

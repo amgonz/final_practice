@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Update">
+
+    <Button
+        android:id="@+id/updateBookBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="67dp"
+        android:text="Update Book" />
+
+    <EditText
+        android:id="@+id/borrowedTxt"
+        android:layout_width="187dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/titleTxt"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="135dp"
+        android:hint="Borrowed By" />
+
+    <EditText
+        android:id="@+id/conditionTxt"
+        android:layout_width="187dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/titleTxt"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="292dp"
+        android:hint="Condition" />
+
+    <EditText
+        android:id="@+id/authorTxt"
+        android:layout_width="187dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="132dp"
+        android:hint="Author" />
+
+    <EditText
+        android:id="@+id/titleTxt"
+        android:layout_width="187dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="78dp"
+        android:hint="Title" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="178dp"
+        android:layout_height="34dp"
+        android:layout_alignStart="@+id/titleTxt"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="34dp"
+        android:text="Enter Book name and Author you would like to access" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="181dp"
+        android:layout_height="32dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="92dp"
+        android:layout_marginLeft="92dp"
+        android:layout_marginTop="221dp"
+        android:text="Enter Changes you want to make below" />
+</RelativeLayout>

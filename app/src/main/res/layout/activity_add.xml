@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Add">
+
+    <EditText
+        android:id="@+id/TitleTxt"
+        android:layout_width="187dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="78dp"
+        android:hint="Title" />
+
+    <EditText
+        android:id="@+id/BorrowedTxt"
+        android:layout_width="187dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/TitleTxt"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="241dp"
+        android:hint="Borrowed By" />
+
+    <EditText
+        android:id="@+id/ConditionTxt"
+        android:layout_width="187dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/TitleTxt"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="188dp"
+        android:hint="Condition" />
+
+    <EditText
+        android:id="@+id/AuthorTxt"
+        android:layout_width="187dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="132dp"
+        android:hint="Author" />
+
+    <Button
+        android:id="@+id/AddBookBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="142dp"
+        android:text="Add Book" />
+</RelativeLayout>
