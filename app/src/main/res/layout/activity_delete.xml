@@ -23,5 +23,14 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="-42dp"
         android:layout_marginTop="105dp"
-        android:text="TextView" />
+        android:hint="Book Title" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:text="Enter a book title you would like to delete" />
 </RelativeLayout>

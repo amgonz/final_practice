@@ -43,6 +43,7 @@ public class Add extends Activity implements View.OnClickListener{
 
     private void writeNewBook(String Title, String Author, String Condition, String Borrowed, String UID){
         Book book = new Book(Author, Borrowed, Condition, Title);
+        // creates new book class and puts it in the db
         mDatabase.getReference("users").child(UID).child(Title).setValue(book);
 
     }

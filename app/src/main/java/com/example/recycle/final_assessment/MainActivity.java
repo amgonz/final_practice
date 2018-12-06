@@ -18,6 +18,25 @@ import com.google.firebase.auth.FirebaseUser;
 
 import static android.content.ContentValues.TAG;
 
+
+// WHY A USER CANNOT DELETE BOOKS THAT DO NOT BELONG TO THEM
+// The delete activity only looks for the book in the user's node. it does not look in
+// other user's node. So We get their UID and pull the child node of that.. from there it searches through each book
+// node for the title that the user wants deleted
+
+
+//#################### DB STRUCTURE ##############################
+//   Users : {
+//              UID:{
+//                      Book-title: {
+//                                      bookAuthor: "",
+//                                      bookBorrowed: "",
+//                                      bookCondition: "",
+//                                      bookTitle: ""
+//                                  }
+//                  }
+//            }
+
 public class MainActivity extends Activity implements View.OnClickListener{
 
     private FirebaseAuth mAuth;
@@ -110,8 +129,10 @@ public class MainActivity extends Activity implements View.OnClickListener{
             Toast.makeText(this, "Checking...", Toast.LENGTH_SHORT).show();
         }else if(v == RegisterBtn){
             if((PasswordTxt.getText().toString().length()) == 0 || (EmailTxt.getText().toString().length()) == 0) {
+
                 Toast.makeText(this, "Enter your email and desired password to register", Toast.LENGTH_SHORT).show();
             }else{
+                Toast.makeText(this, "Registering...", Toast.LENGTH_SHORT).show();
                 registerUser(EmailTxt.getText().toString(), PasswordTxt.getText().toString());
 
             }

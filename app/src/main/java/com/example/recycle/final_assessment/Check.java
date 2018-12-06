@@ -49,53 +49,42 @@ public class Check extends Activity implements View.OnClickListener{
     }
 
 
-    // nested database loop. It goes through each unique user id,
+    // Checks for books by looking at UID,
     // and within the user id, it goes through each book and checks if the borrower is equal
-    // to the user-inputted name
+    // to what the user submitted
+    //NOTE
+    // This only looks within the user's list of books they've entered in. It does not look
+    // in other user's profile- only the books they're submitted in their own profile.
+    // So if jimmy borrowed my book Moby Dick, I'd enter in that information, and when i check "jimmy",
+    // the app will only look within my user ID.
+
     private void checkForBorrower(final String name){
-        final Boolean[] wasBorrowed = {false};
-        DatabaseReference rootRef = mDatabase.getReference().child("users");
+        DatabaseReference rootRef = mDatabase.getReference().child("users").child(UID);
         //loop 1
         rootRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot us : dataSnapshot.getChildren()) {
-                    final String key = us.getKey();
 
+                for (DataSnapshot bk : dataSnapshot.getChildren()) {
+                        System.out.println("======================");
+                        String borrower = bk.child("bookBorrowed").getValue().toString();
+                        String title = bk.child("bookTitle").getValue().toString();
+                        System.out.println(borrower.toUpperCase());
+                        System.out.println(name.toUpperCase());
+                        if(borrower.toUpperCase().equals(name.toUpperCase())){
+                            Toast.makeText(Check.this, borrower+" has borrowed "+title, Toast.LENGTH_SHORT).show();
 
-                    //nested loop 2 start
-                    DatabaseReference userRef = mDatabase.getReference().child("users").child(key);
-                    userRef.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            for (DataSnapshot book : dataSnapshot.getChildren()) {
-                                String bookKey = book.getKey();
-                                String bookBorrowed = book.child("bookBorrowed").getValue(String.class);
-                                if(name.equals(bookBorrowed)){
-                                    wasBorrowed[0] = true;
-//                                    Toast.makeText(Check.this, wasBorrowed[0]+"", Toast.LENGTH_SHORT).show();
-                                    Toast.makeText(Check.this, name+" has borrowed "+bookKey, Toast.LENGTH_SHORT).show();
-                                }
-                            }
                         }
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-                            Toast.makeText(Check.this, "Error", Toast.LENGTH_SHORT).show();
-                        }
-                    }); //nested loop 2 end
 
-                }
+                    }
             }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 Toast.makeText(Check.this, "Error", Toast.LENGTH_SHORT).show();
             }
-        }); //loop 1 end
+        });
 
-        if(wasBorrowed[0] == false){
-            Toast.makeText(this, wasBorrowed[0]+"", Toast.LENGTH_SHORT).show();
-
-        }
 
     }
 
@@ -104,9 +93,6 @@ public class Check extends Activity implements View.OnClickListener{
 
         if(v == checkBtn){
             checkForBorrower(nameTxt.getText().toString());
-
-            // if it doesn't find anything, it will proceed to this line
-//            Toast.makeText(this, "User doesn't have anything checked out", Toast.LENGTH_SHORT).show();
         }
 
     }

@@ -49,6 +49,7 @@ public class Update extends Activity implements View.OnClickListener {
     }
 
     private void writeNewBook(String Title, String Author, String Condition, String Borrowed, String UID){
+        //creates book class based off new user-inputted updates
         Book book = new Book(Author, Borrowed, Condition, Title);
         mDatabase.getReference("users").child(UID).child(Title).setValue(book);
 
@@ -70,12 +71,12 @@ public class Update extends Activity implements View.OnClickListener {
                     String bookTitle = dataSnapshot.child("bookTitle").getValue(String.class);
                     String bookAuthor = dataSnapshot.child("bookAuthor").getValue(String.class);
 
-                    if(bookTitle != null){ //if the book they are inquireing is in the user's checked-out book log
+                    if(bookTitle != null){ //if the book they are inquireing is in the user's checked-out book log,
                         //Update it according to new values
-                        writeNewBook(bookTitle,
-                                bookAuthor,
-                                ConditionTxt.getText().toString(),
-                                BorrowedTxt.getText().toString(),
+                        writeNewBook(bookTitle, //old value
+                                bookAuthor, //old value
+                                ConditionTxt.getText().toString(), //new value
+                                BorrowedTxt.getText().toString(), //new value
                                 UID);
                         Toast.makeText(Update.this, bookTitle + "'s Condition and Borrower has been updated", Toast.LENGTH_SHORT).show();
                     }
